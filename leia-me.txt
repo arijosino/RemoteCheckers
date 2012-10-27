@@ -1,0 +1,16 @@
+Manual de instalação e uso
+
+
+Instalação:
+	-baixe e instale o löve de acordo com o seu sistema operacional (https://love2d.org/)
+	-rode o arquivo DamasPPD.love segundo as instruções do terceiro tópico do seguinte endereço (provavelmente basta dar duplo clique, se for no ubuntu, windows ou mac OS) https://love2d.org/wiki/Getting_Started
+	
+Controles:
+	-Botão direito do mouse - seleciona/move uma peça
+	-Botão esquerdo do mouse - alterna o status de dama de uma peça
+	-Botão do meio do mouse - manda uma peça para o morto
+
+Como jogar:
+	-Uma instância do programa deverá hospedar o jogo e outra deverá conectar-se ao hospedeiro através do endereço e porta especificados
+	-Estando um nó servidor e um cliente conectados entre si (ou seja, 2 jogadores na sala) tanto o nó cliente como o nó servidor podem clicar no botão Novo Jogo para criar um jogo.
+	-Se nenhuma peça tiver sido selecionada, o jogador deverá selecionar uma peça clicando sobre ela, e para movimentá-la, basta clicar em uma casa vazia que não seja na região do "Morto"
