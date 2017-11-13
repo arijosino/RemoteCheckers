@@ -18,7 +18,7 @@ eGui.textbox.exec = function() end
 
 eGui.button = class:new()
 eGui.button.type = 'button'
-eGui.button.name = 'defualt'
+eGui.button.name = 'default'
 eGui.button.text = 'New Button'
 eGui.button.x = 0
 eGui.button.y = 0
@@ -157,8 +157,10 @@ function eGui.getItemByID(id)
 end
 
 function eGui.mouse(x, y, btn)
+	print("egui mouse "..btn.." "..table.getn(eGui.items)..type(btn))
 	for k,v in ipairs(eGui.items) do
-		if btn == 'l' then
+		if btn == 1 then
+			print("herp")
 			if x > v.x and x < v.x + v.w and y > v.y and y < v.y + v.h then
 				if v.type == 'textbox' and v.visible == true then
 					v.focus = true

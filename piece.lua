@@ -51,7 +51,7 @@ end
 
 function Piece.mousepressed(x,y,btn)
 	
-	if btn == 'l' then
+	if btn == 1 then
 		if (board.x <= x and x <= board.x + board.w and
 			board.y <= y and y <= board.y + board.h ) or 
 			(deadzone.x <= x and x <= deadzone.x + deadzone.w and
@@ -84,7 +84,7 @@ function Piece.mousepressed(x,y,btn)
 				end
 			end
 		end
-	elseif btn == 'm' then
+	elseif btn == 3 then
 		for k,v in ipairs(pieceArray) do
 			if v.x - v.radius <= x and x <= v.x + v.radius and
 			 v.y - v.radius <= y and y <= v.y + v.radius then
@@ -94,7 +94,7 @@ function Piece.mousepressed(x,y,btn)
 				end
 			end
 		end
-	elseif btn == 'r' then
+	elseif btn == 2 then
 		for k,v in ipairs(pieceArray) do
 			if v.x - v.radius <= x and x <= v.x + v.radius and
 			 v.y - v.radius <= y and y <= v.y + v.radius then

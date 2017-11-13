@@ -9,7 +9,7 @@ require 'deadzone'
 clientlist = {}
 config = {}
 config.name = 'anonimo'
-config.ip = 'ririari.hopto.org'
+config.ip = '127.0.0.1'
 config.port = 8080
 nodeMode = nil
 inGame = false
@@ -20,7 +20,7 @@ function love.load()
 	love.keyboard.setKeyRepeat(0.5, 0.02)
 	
 	eGui.button.create('connectButton', 'Conectar', 0, 0, 100, 25, true, function() tryToConnect('client') end)
-	eGui.button.create('hostButton', 'Hospedar', 0, 0, 100, 25, true, function() tryToConnect('server')end)
+	eGui.button.create('hostButton', 'Hospedar', 0, 0, 100, 25, true, function() tryToConnect('server') end)
 	eGui.button.create('newGameButton', 'Novo Jogo', 0, love.graphics.getHeight() - 30, 100, 25, true, function() createGame() end)
 	eGui.button.create('disconnectButton', 'Desconectar',love.graphics.getWidth() - 105, love.graphics.getHeight() - 30, 100, 25, true, function() disconnect() end)
 	
@@ -92,6 +92,7 @@ function love.load()
 end
 
 function tryToConnect(mode) --função a ser chamada pelos botões de conexão ou hospedagem
+	print("something "..mode)
 	if nodeMode then
 		addToLog('Você ja está conectado')
 	else
@@ -211,8 +212,16 @@ function love.draw()
 	end
 end
 
-function love.keypressed(key, unicode)
-	eGui.keyboard(key, unicode)
+function love.textinput(text)
+	print("key pressed "..text)
+	eGui.keyboard(text, string.byte(text))
+end
+
+function love.keypressed(key, scancode, isrepeat)
+	print(key)
+	if key == 'backspace' or key == 'return' or key == 'kpenter' then
+		eGui.keyboard(key, scancode)
+	end
 end
 
 function love.quit()
@@ -222,9 +231,10 @@ function love.quit()
 		socketUnderlay.quit()
 	end
 	Piece.quit()
+	return false
 end
 
-function love.mousepressed(x, y, btn)
+function love.mousepressed(x, y, btn, istouch)
 	eGui.mouse(x, y, btn)
 	Piece.mousepressed(x,y,btn)
 end
